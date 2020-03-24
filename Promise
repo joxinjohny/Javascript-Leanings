@@ -1,0 +1,59 @@
+Promise in javascript is used to handle asynch operations.
+
+let promiseToCleanTheRoom = new Promise(function(resolve, reject) {
+  // Cleaning the room
+  
+  let isClean = true;
+  
+  if(isClean) {
+    resolve('Clean');
+  } else {
+    reject('Not Clean);
+  }
+});
+
+promiseToCleanTheRoom.then(function(fromResolve) {
+  console.log("The room is " + fromResolve);
+}).catch(function(fromReject) {
+  console.log("The room is " + fromReject);
+});
+
+
+=> NESTING PROMISES
+--------------------
+
+let cleanRoom = function(){
+  return new promise(function(resolve, reject) {
+    resolve("Cleaned the room");
+  });
+};
+
+let collectGarbage = function(message){
+  return new promise(function(resolve, reject) {
+    resolve(message + "Garbage collected");
+  });
+}
+
+let winIceCream = function(message){
+  return new promise(function(resolve, reject) {
+    resolve(message + "Won Ice Cream");
+  });
+}
+
+cleanRoom().then(function(result){
+  return collectGarbage(result);
+}).then(function(result){
+  return winIceCream(result);
+}).then(function(result){
+  console.log(result);
+});
+
+
+
+
+
+
+
+
+
+
