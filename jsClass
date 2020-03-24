@@ -1,0 +1,58 @@
+JavaScript ECMAScript 5, does not have class type.
+So it does not support full object oriented programming concept as other languages like Java or C#. 
+However, you can create a function in such a way so that it will act as a class.
+
+      function Person() {
+        this.firstName = 'unknown';
+        this.lastName = 'unknown';
+      }
+      
+      var person1 = new Person();
+      person1.firstName = 'Joxin';
+      person1.lastName = 'Johny';
+      
+      alert("Fullname of Person 1 is : " + person1.firstName + " " + person1.lastName);
+      
+      
+=> ADD METHODS IN A CLASS
+-------------------------
+
+      function Person() {
+        this.firstName = 'unknown';
+        this.lastName = 'unknown';
+        this.getFullName = function() {
+          return this.firstName + " " + this.lastName;
+        }
+      }
+      
+       
+=> SETTER AND GETTER IN CLASS
+-----------------------------
+
+      function Person(firstName, lastName, age) {
+        var _firstName = firstName || "unknown";
+        var _lastName = lastName || "unknown";
+        var _age = age || 25;
+
+        Object.defineProperties(this, {
+            "FirstName": {
+                get: function () { return _firstName },
+                set: function (value) { _firstName = value }
+            },
+            "LastName": {
+                get: function () { return _lastName },
+                set: function (value) { _lastName = value }
+            },
+            "Age": {
+                get: function () { return _age },
+                set: function (value) { _age = value }
+            }
+        });
+
+        this.getFullName = function () {
+                return this.FirstName + " " + this.LastName;
+        }
+    };
+    
+    
+    
