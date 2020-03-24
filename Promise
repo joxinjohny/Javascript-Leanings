@@ -50,8 +50,14 @@ cleanRoom().then(function(result){
 
 
 
+Promise.all([cleanRoom(), collectGarbage(), winIceCream()]).then(
+  console.log("All Finished");
+);
 
 
+Promise.race([cleanRoom(), collectGarbage(), winIceCream()]).then(
+  console.log("One of them is Finished");
+);
 
 
 
